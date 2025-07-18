@@ -1,0 +1,1 @@
+// Admin panel endpoints: ban user, delete style, get reports

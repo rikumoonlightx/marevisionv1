@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAREVISION</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>MAREVISION</h1>
+    <p>FFXIV Style Sharing Platform</p>
+  </header>
+
+  <nav>
+    <button onclick="showSection('explore')">Explore</button>
+    <button onclick="showSection('upload')">Upload</button>
+    <button onclick="showSection('admin')">Admin Panel</button>
+    <button onclick="showSection('login')">Login</button>
+    <button onclick="showSection('register')">Register</button>
+  </nav>
+
+  <main>
+    <!-- Explore -->
+    <section id="explore" class="active">
+      <h2>Explore Styles</h2>
+      <input type="text" placeholder="Search styles..." />
+      <div class="filters">
+        <label><input type="checkbox" /> NSFW</label>
+        <label><input type="checkbox" /> Modded</label>
+      </div>
+      <div class="style-list">
+        <div class="style-card" onclick="openModal('Sample Style')">
+          <img src="preview.png" alt="Preview" />
+          <p>Sample Style</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upload -->
+    <section id="upload">
+      <h2>Upload Your Style</h2>
+      <form>
+        <input type="text" placeholder="Style Title" /><br />
+        <input type="text" placeholder="Tags (comma separated)" /><br />
+        <input type="text" placeholder="Mare link" /><br />
+        <input type="file" accept=".ttmp2" /><br />
+        <label><input type="checkbox" /> NSFW</label>
+        <label><input type="checkbox" /> Modded</label><br />
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <!-- Admin Panel -->
+    <section id="admin">
+      <h2>Admin Panel</h2>
+      <p>Reported Styles:</p>
+      <ul>
+        <li>Style A - <button>Delete</button> <button>Ignore</button></li>
+      </ul>
+      <p>Manage Users:</p>
+      <ul>
+        <li>UserX - <button>Ban</button></li>
+      </ul>
+    </section>
+
+    <!-- Login -->
+    <section id="login">
+      <h2>Login</h2>
+      <form>
+        <input type="email" placeholder="Email" /><br />
+        <input type="password" placeholder="Password" /><br />
+        <button type="submit">Login</button>
+      </form>
+      <button onclick="showSection('reset')">Forgot Password?</button>
+    </section>
+
+    <!-- Register -->
+    <section id="register">
+      <h2>Register</h2>
+      <form>
+        <input type="text" placeholder="Username" /><br />
+        <input type="email" placeholder="Email" /><br />
+        <input type="password" placeholder="Password" /><br />
+        <button type="submit">Register</button>
+      </form>
+    </section>
+
+    <!-- Reset Password -->
+    <section id="reset">
+      <h2>Reset Password</h2>
+      <form>
+        <input type="email" placeholder="Your Email" /><br />
+        <button type="submit">Send Reset Link</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" onclick="this.style.display='none'">
+    <div class="modal-content">
+      <span class="close-btn" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+      <h3 id="modalTitle">Style Title</h3>
+      <p>Tags: casual, modded</p>
+      <p>Mare Link: <code>mare/some-link</code></p>
+      <button class="btn">Download .ttmp2</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 MAREVISION | FFXIV Style Platform by Riku & Mavie 💜</p>
+  </footer>
+
+  <script>
+    function openModal(title) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modal').style.display = 'flex';
+    }
+    function showSection(id) {
+      document.querySelectorAll('main > section').forEach(sec => sec.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+    showSection('explore');
+  </script>
+</body>
+</html>
